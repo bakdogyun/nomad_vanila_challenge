@@ -3,6 +3,7 @@ const toDoInput = toDoForm.querySelector("input");
 const todoList = document.querySelector(".everything .list");
 const todayTodoList = document.querySelector(".today .list");
 const dueDateCheck = document.querySelector(".todo .due .check");
+const checker = dueDateCheck.querySelector("input");
 const dueDatePickerDiv = document.querySelector(".todo .due .date");
 const dueDatePicker = document.querySelector(".todo .due .date input");
 
@@ -18,7 +19,7 @@ function isDueDate() {
   dueDatePicker.required = true;
 }
 
-dueDateCheck.addEventListener("click", isDueDate);
+checker.addEventListener("change", isDueDate);
 
 function parseYYMMDD(dates) {
   const month = String(dates.getMonth() + 1).padStart(2, "0");
@@ -93,8 +94,10 @@ function handleToDoSubmit(event) {
     dueDatePickerDiv.classList.toggle(HIDDEN_CLASSNAME);
     dueDateCheck.classList.toggle(HIDDEN_CLASSNAME);
     dueDatePicker.required = false;
+    checker.checked = false;
   } else {
     dueDate = "";
+    checker.checked = false;
   }
 
   const newToDoObj = {
@@ -124,14 +127,6 @@ function parseYYMMDD(dates) {
   const year = String(dates.getFullYear());
 
   return `${year}-${month}-${date}`;
-}
-
-function handleDueDate(duedate) {
-  const today = new Date();
-  const parsedToday = parseYYMMDD(today);
-
-  if (duedate == parsedToday) {
-  }
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
