@@ -66,6 +66,7 @@ body {
   text-align: center;
 
   color: #0c102e;
+  z-index: 2;
 }
 .login-form button {
   background: #5352ed;
@@ -301,6 +302,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
   color: #0c102e;
 }
+h3 {
+  text-align: center;
+}
 .everything {
   position: absolute;
   width: 400px;
@@ -308,9 +312,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .everything .subtitle {
   position: absolute;
-  width: 101px;
+  width: 100px;
   height: 23px;
-  left: 135px;
+  left: calc(50% - 100px / 2 + 0.5px);
   top: 0px;
 }
 

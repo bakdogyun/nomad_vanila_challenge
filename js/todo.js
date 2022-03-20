@@ -77,7 +77,6 @@ function paintToDo(newToDo) {
 
   todoList.appendChild(div);
   if (dueDate == parsedToday) {
-    console.log(parsedToday);
     todayTodoList.appendChild(div);
   }
 }
@@ -85,8 +84,19 @@ function paintToDo(newToDo) {
 function handleToDoSubmit(event) {
   event.preventDefault();
   const newToDo = toDoInput.value;
-  const dueDate = dueDatePicker.value;
   toDoInput.value = "";
+  let dueDate;
+
+  if (!dueDatePickerDiv.classList.contains(HIDDEN_CLASSNAME)) {
+    dueDate = dueDatePicker.value;
+    dueDatePicker.value = "";
+    dueDatePickerDiv.classList.toggle(HIDDEN_CLASSNAME);
+    dueDateCheck.classList.toggle(HIDDEN_CLASSNAME);
+    dueDatePicker.required = false;
+  } else {
+    dueDate = "";
+  }
+
   const newToDoObj = {
     text: newToDo,
     id: Date.now(),

@@ -18,7 +18,7 @@ function handleLogInSubmit(event) {
   logInForm.classList.add(HIDDEN_CLASSNAME);
   todoForm.classList.remove(HIDDEN_CLASSNAME);
   content.classList.remove(HIDDEN_CLASSNAME);
-
+  quote.classList.remove(HIDDEN_CLASSNAME);
   const userName = logInInput.value;
   localStorage.setItem(USERNAME_KEY, userName);
   fillGreeting(userName);
